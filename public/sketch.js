@@ -1,12 +1,11 @@
-let lat, lon, weather, air;
-
 if ('geolocation' in navigator) {
 	console.log('geolocation is availble');
 	navigator.geolocation.getCurrentPosition(async position => {
+		let lat, lon, weather, air;
 		try {
 			console.log(position);
-			lat = position.coords.latitude.toFixed(2);
-			lon = position.coords.longitude.toFixed(2);
+			lat = position.coords.latitude;
+			lon = position.coords.longitude;
 			document.getElementById('latitude').textContent = lat.toFixed(2);
 			document.getElementById('longitude').textContent = lon.toFixed(2);
 			const response = await fetch(`/weather/${lat},${lon}`);
@@ -21,7 +20,7 @@ if ('geolocation' in navigator) {
 			document.getElementById('aq_unit').textContent = air.unit;
 			document.getElementById('aq_date').textContent = air.lastUpdated;
 		} catch (error) {
-			console.log('Something went wrong!')
+			console.log(error)
 		}
 		const data = {
 			lat,
