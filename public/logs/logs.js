@@ -20,11 +20,15 @@ async function getData() {
 		console.log(item)
 		const marker = L.marker([item.lat, item.lon]).addTo(mymap);
 		const txt = `The weather here at ${item.lat}&deg;, ${item.lon}&deg; is
-		${item.weather.summary} with a temperature of ${item.weather.temperature}&deg;C.
-		The concentration of particulate matter (${item.air.parameter}) is
-		${item.air.value}${item.air.unit} last read on ${item.air.lastUpdate}`
+		${item.weather.summary} with a temperature of ${item.weather.temperature}&deg;C.`;
 
+		if (item.air.value < 0) {
+			txt += ' No air quality reading.';
+		} else {
+			txt += ` The concentration of particulate matter 
+    (${item.air.parameter}) is ${item.air.value} 
+    ${item.air.unit} last read on ${item.air.lastUpdated}`;
+		}
 		marker.bindPopup(txt);
-
 	}
 }

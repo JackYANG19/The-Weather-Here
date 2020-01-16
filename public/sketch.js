@@ -20,7 +20,11 @@ if ('geolocation' in navigator) {
 			document.getElementById('aq_unit').textContent = air.unit;
 			document.getElementById('aq_date').textContent = air.lastUpdated;
 		} catch (error) {
-			console.log(error)
+			console.log('Something went wrong!')
+			air = {
+				value: -1
+			};
+			document.getElementById('aq_value').textContent = 'NO READING';
 		}
 		const data = {
 			lat,
