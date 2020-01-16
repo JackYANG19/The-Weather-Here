@@ -19,7 +19,7 @@ async function getData() {
 	for (let item of data) {
 		console.log(item)
 		const marker = L.marker([item.lat, item.lon]).addTo(mymap);
-		const txt = `The weather here at ${item.lat}&deg;, ${item.lon}&deg; is
+		let txt = `The weather here at ${item.lat}&deg;, ${item.lon}&deg; is
 		${item.weather.summary} with a temperature of ${item.weather.temperature}&deg;C.`;
 
 		if (item.air.value < 0) {
