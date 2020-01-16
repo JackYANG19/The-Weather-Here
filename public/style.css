@@ -1,0 +1,17 @@
+body {
+  margin: 10;
+  padding: 0;
+  overflow: auto;
+}
+
+canvas {
+  margin: auto;
+}
+
+p {
+  background-color: blanchedalmond;
+}
+
+#checkinMap {
+  height: 400px;
+}
